@@ -19,7 +19,7 @@
       </td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
       <td>
-        <%= link_to "Supprimer", article_path(article), data: {"turbo-method": :delete} %>
+        <%= link_to "Supprimer", article_path(article), data: {"turbo-method": :delete ,"turbo-confirm": "Êtes-vous sûr ?"} %>
       </td>
 
     </tr>
@@ -29,3 +29,5 @@
 <p>
   <%= link_to 'Créer un nouvel article', new_article_path %>
 </p>
+
+<%= link_to 'page d\'accueil', root_path %>
