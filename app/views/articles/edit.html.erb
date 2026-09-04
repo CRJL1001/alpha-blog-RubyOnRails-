@@ -1,8 +1,8 @@
-<h1>Créer un nouvel Article :</h1>
+<h1>Editer un Article :</h1>
 
 
 <% if @article.errors.any? %>
-  <h2>Erreur(s) lors de la création de l'article : </h2>
+  <h2>Erreur(s) lors de l'édition de l'article : </h2>
   <ul>
     <% @article.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -10,7 +10,7 @@
   </ul>
 <% end %>
 
-<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+<%= form_with(model: @article, local: true) do |f| %>
 
   <p>
     <%= f.label :title %><br>
