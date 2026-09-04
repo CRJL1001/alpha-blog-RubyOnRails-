@@ -14,7 +14,17 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.description %></td>
-      <td>actions</td>
+      <td>
+        <%= form_with url: article_path(article), method: :get do |f| %>
+          <%= f.submit "Voir" %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_with url: article_path(article), method: :delete do |f| %>
+          <%= f.submit "Supprimer" %>
+        <% end %>
+      </td>
+
     </tr>
     <% end %>
   </tbody>
