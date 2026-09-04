@@ -1,31 +1,3 @@
 <h1>Créer un nouvel Article :</h1>
-
-
-
-<%= form_with model: @article, url: articles_path, local: true do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-    <% if @article.errors[:title].any? %>
-      <div style="color: red;">
-        <%= @article.errors[:title].join(', ') %>
-      </div>
-    <% end %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, rows: 5 %>
-    <% if @article.errors[:description].any? %>
-      <div style="color: red;">
-        <%= @article.errors[:description].join(', ') %>
-      </div>
-    <% end %>
-  </p>
-
-  <p>
-    <%= f.submit "Créer l'article" %>
-  </p>
-<% end %>
-
+<%= render 'form' %>
 <%= link_to 'Retourner aux articles', articles_path %>
