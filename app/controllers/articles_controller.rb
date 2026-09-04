@@ -11,18 +11,19 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
-
   def create
     @article = Article.new(params.require(:article).permit(:title, :description))
+
     if @article.save
-      flash[:notice] = "Article créer avec succès"
-      redirect_to article_path(@article)
+      flash[:notice] = "Article créé avec succès"
+      redirect_to @article
     else
-      render 'new'
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def update
@@ -31,7 +32,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article mis à jour !"
       redirect_to @article
     else
-      render 'edit'
+      render :edit, status: :unprocessable_entity
     end
   end
 

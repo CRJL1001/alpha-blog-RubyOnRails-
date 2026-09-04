@@ -1,28 +1,29 @@
 <h1>Créer un nouvel Article :</h1>
 
 
-<% if @article.errors.any? %>
-  <h2>Erreur(s) lors de la création de l'article : </h2>
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 
-<%= form_with scope: :article, url: articles_path, local: true do |f| %>
-
+<%= form_with model: @article, url: articles_path, local: true do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
+    <% if @article.errors[:title].any? %>
+      <div style="color: red;">
+        <%= @article.errors[:title].join(', ') %>
+      </div>
+    <% end %>
   </p>
 
   <p>
     <%= f.label :description %><br>
-    <%= f.textarea :description %>
+    <%= f.text_area :description, rows: 5 %>
+    <% if @article.errors[:description].any? %>
+      <div style="color: red;">
+        <%= @article.errors[:description].join(', ') %>
+      </div>
+    <% end %>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit "Créer l'article" %>
   </p>
 <% end %>
